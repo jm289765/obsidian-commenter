@@ -33,7 +33,7 @@ chrome.runtime.onMessage.addListener(async function listener(result) {
     const note = encodeURIComponent(result.note)
     
     // const baseURL = 'http://localhost:8080'; // Used for testing...
-    const baseURL = 'https://jplattel.github.io/obsidian-clipper'
+    const baseURL = 'https://jm289765.github.io/obsidian-commenter'
     
     let redirectUrl;
     // Redirect to page (which opens obsidian).
