@@ -3,16 +3,22 @@ export const createTest = async () => create(true);
 
 export const create = async (testing=false) => {
     console.log("starting clipper...")
-    let defaultNoteFormat = `> {clip}
+    let defaultNoteFormat = `
+From [{title}]({url}) on {date} at {time} {timezone}
 
-// Clipped from [{title}]({url}) at {date}.`
+{blockquote}
+
+
+
+---
+`
 
     let defaultClippingOptions = { // todo: make defaults come from options.js
-        obsidianVaultName: 'Obsidian',
-        selectAsMarkdown: false,
+        obsidianVaultName: 'Thoughts',
+        selectAsMarkdown: true,
         obsidianNoteFormat: defaultNoteFormat,
-        obsidianNoteName: "Chrome Clippings",
-        clipAsNewNote: true,
+        obsidianNoteName: "{year} Random Notes/{month}/{date}_{title}",
+        clipAsNewNote: false,
         dateFormat: "YYYY-MM-DD",
         datetimeFormat: "YYYY-MM-DD HH:mm:ss",
         timeFormat: "HH:mm:ss",

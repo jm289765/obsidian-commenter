@@ -33,13 +33,19 @@ function saveOptions() {
 // stored in chrome.storage.
 function restoreOptions() {
     chrome.storage.sync.get({ // todo: should this be set?
-        obsidianVaultName: 'obsidian',
-        obsidianNoteName: 'Chrome Clippings',
-        selectAsMarkdown: false,
-        obsidianNoteFormat: `> {clip},
+        obsidianVaultName: 'Thoughts',
+        obsidianNoteName: '{year} Random Notes/{month}/{date}_{title}',
+        selectAsMarkdown: true,
+        obsidianNoteFormat: `
+From [{title}]({url}) on {date} at {time} {timezone}
 
-Clipped from [{title}]({url}) at {date}.`,
-        clipAsNewNote: true,
+{blockquote}
+
+
+
+---
+`,
+        clipAsNewNote: false,
         datetimeFormat: "YYYY-MM-DD HH:mm:ss",
         dateFormat: "YYYY-MM-DD",
         timeFormat: "HH:mm:ss",
