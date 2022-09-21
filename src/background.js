@@ -43,14 +43,16 @@ chrome.runtime.onMessage.addListener(async function listener(result) {
         redirectUrl = `${baseURL}/clip.html?vault=${encodeURIComponent(vault)}&note=${encodeURIComponent(noteName)}&content=${encodeURIComponent(note)}`
     }
     
-    // Open a new tab for clipping through the protocol, since we cannot go from the extension to this..
+    // Open a new tab for clipping through the protocol, since we cannot go from the extension to this...
     if (result.testing) {
-        chrome.tabs.create({ url: redirectUrl , active: true},function(obsidianTab){
+        chrome.tabs.create({ url: redirectUrl, active: true }, function (obsidianTab) {
             // Since we're testing, we are not closing the tag...
         });
     } else {
-        chrome.tabs.create({ url: redirectUrl , active: true},function(obsidianTab){
-            setTimeout(function() { chrome.tabs.remove(obsidianTab.id) }, 500);
+        chrome.tabs.create({ url: redirectUrl, active: false }, function (obsidianTab) {
+            setTimeout(function () {
+                chrome.tabs.remove(obsidianTab.id)
+            }, 500);
         });
     }
 });
