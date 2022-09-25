@@ -142,10 +142,11 @@ function formatName(noteName, formatData) {
     // they need to be removed from placeholders but
     // not from the noteName formatting string
     // todo: backslashes seem to cause a new file to always be created. haven't tested it much.
+    // also replace colons with - for the time placeholder. hacky solution.
     const noParentheses = formatData.map((item) => {
             return {
                 regex: item.regex,
-                value: item.value.replace(/\\[/]/g, " ")
+                value: item.value.replace(/\\[/]/g, " ").replace(/\:/g, "-")
             }
         })
 
