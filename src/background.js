@@ -28,8 +28,8 @@ chrome.action.onClicked.addListener(async function (tab) {
 chrome.runtime.onMessage.addListener(async function listener(result) {
     console.log(result)
     const clipAsNewNote = result.clipAsNewNote
-    const vault = result.vault
-    const noteName = result.noteName
+    const vault = encodeURIComponent(result.vault)
+    const noteName = encodeURIComponent(result.noteName)
     const note = encodeURIComponent(result.note)
     
     // const baseURL = 'http://localhost:8080'; // Used for testing...
@@ -38,9 +38,9 @@ chrome.runtime.onMessage.addListener(async function listener(result) {
     let redirectUrl;
     // Redirect to page (which opens obsidian).
     if (clipAsNewNote) {
-        redirectUrl = `${baseURL}/clip-to-new.html?vault=${encodeURIComponent(vault)}&note=${encodeURIComponent(noteName)}&content=${encodeURIComponent(note)}`
+        redirectUrl = `${baseURL}/clip-to-new.html?vault=${vault}&note=${noteName}&content=${note}`
     } else {
-        redirectUrl = `${baseURL}/clip.html?vault=${encodeURIComponent(vault)}&note=${encodeURIComponent(noteName)}&content=${encodeURIComponent(note)}`
+        redirectUrl = `${baseURL}/clip.html?vault=${vault}&note=${noteName}&content=${note}`
     }
     
     // Open a new tab for clipping through the protocol, since we cannot go from the extension to this...
