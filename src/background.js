@@ -30,7 +30,7 @@ chrome.runtime.onMessage.addListener(async function listener(result) {
     const clipAsNewNote = result.clipAsNewNote
     const vault = encodeURIComponent(result.vault)
     const noteName = encodeURIComponent(result.noteName)
-    const note = encodeURIComponent(result.note)
+    const note = encodeURIComponent(encodeURIComponent(result.note))
     
     // const baseURL = 'http://localhost:8080'; // Used for testing...
     const baseURL = 'https://jm289765.github.io/obsidian-commenter'
